@@ -1,10 +1,11 @@
+import Browse from "./Browse";
 import { Children } from "react";
 import { RouterProvider } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
-import Browse from "./Browse";
 import Error from "./Error";
 import Login from "./Login";
 import Review from "./Review";
+import SignUp from "./SignUp";
 
 const Body = ()=>{
 
@@ -12,6 +13,10 @@ const Body = ()=>{
         {
             path:"/",
             element:<Login/>
+        },
+        {
+            path:"/sign-up",
+            element:<SignUp/>
         },
         {
             path:'/browse',

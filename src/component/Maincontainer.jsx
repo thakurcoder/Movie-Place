@@ -5,8 +5,8 @@ const Maincontainer = (props)=>{
     const data = props.data[0]
     return(
         <div>
-            <Title data={data}/>
             <VideoBg data={data}/>
+            <Title data={data}/>
         </div>
     )
 }

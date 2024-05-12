@@ -9,10 +9,11 @@ import Gptpage from "./Gptpage";
 
 const Browse = ()=>{
 
-    
+
+
     const {GptSearch} = useContext(DataContext)
     const {data} = useContext(DataContext)
-    const {login} = useContext(DataContext)
+    const {login} = useContext(DataContext) 
     // console.log("data ",data )
     Usemoviedata()
     // console.log("data ",data )

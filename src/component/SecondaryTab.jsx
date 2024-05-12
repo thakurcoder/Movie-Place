@@ -3,66 +3,38 @@ import UseTopRated from "../utils/hooks/usetoprated";
 import UseTvShow from "../utils/hooks/usetvshow";
 import MovieCard from "./Moviecard";
 
-const Secondary = (props)=>{
-// console.log("sec ",props)
+const Secondary = (props) => {
+    const popularmovie = UsePopularMovie();
+    const TopRated = UseTopRated();
+    const tvshow = UseTvShow();
 
+    if (!TopRated || !tvshow) return null;
 
-const popularmovie = UsePopularMovie()
-const TopRated = UseTopRated()
-// if(!TopRated) return
+    return (
+        <div className=" bolck bg-black text-white py-20 pl-5">
+            <div className="container mx-auto">
+                <h1 className="text-3xl font-bold mb-10">Now Playing</h1>
+                <div className="flex overflow-x-scroll no-scrollbar mb-10">
+                    {props.data.map((e) => <MovieCard key={e.id} data={e} />)}
+                </div>
 
-const tvshow =UseTvShow()
-// console.log("tvshow" ,tvshow)
-// if(!tvshow) return
-if (!TopRated || !tvshow) return null;
+                <h1 className="text-3xl font-bold mb-10">Popular</h1>
+                <div className="flex overflow-x-scroll no-scrollbar mb-10">
+                    {popularmovie.map((e) => <MovieCard key={e.id} data={e} />)}
+                </div>
 
-// console.log("toprated ",TopRated)
-// console.log("data from pop ",popularmovie)
+                <h1 className="text-3xl font-bold mb-10">Top Rated</h1>
+                <div className="flex overflow-x-scroll no-scrollbar mb-10">
+                    {TopRated.map((e) => <MovieCard key={e.id} data={e} />)}
+                </div>
 
-    return(
-        <div className="bg-black">
-        <div className=" text-white sm:-mt-80 relative pt-52 sm:pt-0 md:pt-52 w-full">
-            <h1 className="font-bold text-3xl  p-4 ">Now Playing</h1>
-
-            <div className="flex overflow-x-scroll no-scrollbar">
-            {props.data.map((e)=>{
-
-            return <MovieCard key={e.id} data={e}/>
-            })}
-            
-            </div>
-            <h1 className="font-bold text-3xl m-2 p-2">Popular</h1>
-
-            <div className="flex overflow-x-scroll no-scrollbar ">
-            {popularmovie.map((e)=>{
-
-            return <MovieCard key={e.id} data={e}/>
-            })}
-            </div>
-            
-            <h1 className="font-bold text-3xl m-2 p-2">Top Rated</h1>
-
-            <div className="flex overflow-x-scroll no-scrollbar ">
-            {TopRated.map((e)=>{
-
-            return <MovieCard key={e.id} data={e}/>
-            })}
-            </div>
-            <h1 className="font-bold text-3xl m-2 p-2">Tv Show</h1>
-
-            <div className="flex overflow-x-scroll no-scrollbar ">
-            {tvshow.map((e)=>{
-
-            return <MovieCard key={e.id} data={e}/>
-            })}
+                <h1 className="text-3xl font-bold mb-10">TV Shows</h1>
+                <div className="flex overflow-x-scroll no-scrollbar">
+                    {tvshow.map((e) => <MovieCard key={e.id} data={e} />)}
+                </div>
             </div>
         </div>
-          
-
-
- 
-        </div>
-    )
+    );
 }
 
 export default Secondary;

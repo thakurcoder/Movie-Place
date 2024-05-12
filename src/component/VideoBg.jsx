@@ -1,38 +1,38 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { API_OPTION } from "../utils/Constant";
 
-const VideoBg = (props)=>{
-    // console.log("props ",props.data.id)
+const VideoBg = (props) => {
+    const [trailerVideo, setTrailerVideo] = useState();
 
-    const [trailerVideo,settrailerVideo] = useState()
+    const trailer = async () => {
+        const data = await fetch('https://api.themoviedb.org/3/movie/' + props.data.id + '/videos?language=en-US', API_OPTION);
+        const json = await data.json();
+        const filterTrailer = json.results.filter((e) => {
+            return e.type === "Trailer";
+        });
 
-    const trailer = async ()=>{
-        const data = await fetch('https://api.themoviedb.org/3/movie/'+ props.data.id +'/videos?language=en-US', API_OPTION)
-        const json = await data.json()
-        // console.log("video ",json)
-        const filtertrailer = json.results.filter((e)=>{
-            return e.type="Trailer"
-        })
-
-        // console.log("filtertrailer ",filtertrailer)
-        settrailerVideo(filtertrailer[0])
-
+        setTrailerVideo(filterTrailer[0]);
     }
 
-    useEffect(()=>{
-        trailer()
-    })
+    useEffect(() => {
+        trailer();
+    }, []);
 
-    if(!trailerVideo) return
+    if (!trailerVideo) return null;
 
-    return(
-        <div>
+    return (
+        <div className="block w-full h-80 sm:h-screen overflow-hidden">
+            <div className="absolute inset-0 opacity-70"></div>
             <iframe
-            className=" w-full sm:h-full aspect-video h-80   "
-               src={`https://www.youtube.com/embed/${trailerVideo.key}?&autoplay=1&mute=1&controls=0&loop=1`} title="YouTube video player" frameBorder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen></iframe>
+    className="block inset-0 w-full h-full object-cover"
+    src={`https://www.youtube.com/embed/${trailerVideo.key}?&autoplay=1&mute=1&controls=0&loop=1&modestbranding=1`}
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+    allowFullScreen
+></iframe>
         </div>
-    )
+    );
 }
 
 export default VideoBg;

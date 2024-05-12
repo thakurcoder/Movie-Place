@@ -1,16 +1,12 @@
-const Title = (props)=>{
+const Title = (props) => {
+    if (!props?.data?.original_title) return null;
 
-    // console.log("in title ",props.data)
-
-    if(!props?.data?.original_title) return
-
-    return(
-        <div className="absolute text-white w-screen aspect-video p-4  sm:pt-56 pt-56 bg-gradient-to-r from-black opacity-50">
-            <h1 className=" sm:text-5xl text-2xl font-bold p-4">{props.data.original_title}</h1>
-            <p className="sm:text-xl sm:w-[35%] p-4 italic ">{props.data.overview}</p>
-
-        </div>
-    )
-}
+    return (
+        <div className=" -mt-24 block bg-black bottom-4 left-0 w-full text-center text-white z-10">
+        <h1 className=" bg-black mt-24 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 leading-tight sm:leading-tight text-shadow">{props.data.original_title}</h1>
+        <p className=" block p-11    text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl italic text-shadow">{props.data.overview}</p>
+    </div>
+    );
+};
 
 export default Title;
