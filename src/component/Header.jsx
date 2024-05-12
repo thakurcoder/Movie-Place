@@ -6,7 +6,7 @@ import { DataContext } from "./Context/DataContext";
 const Header = () => {
 
     const {login} = useContext(DataContext)
-    console.log("login type",login)
+    // console.log("login type",login)
     const {GptSearch,setGptSearch} = useContext(DataContext)
     function handleSignOut(){
 

@@ -12,7 +12,7 @@ const DataContextProvider = ({children})=>{
         try{
 
            const item =  window.localStorage.getItem('user_login')
-           console.log("item ",item)
+        //    console.log("item ",item)
            return item!=null? JSON.parse(item):false
         }catch{
             return false

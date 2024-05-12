@@ -16,7 +16,7 @@ const GptSearch = ()=>{
     const handleGptClick = async ()=>{
         //   console.log(searchtext.current.value)
         // open ai
-        const gptQuarry = "Act as a Movie recommendation system and suggest some movie for quarry : "+ searchtext.current.value + ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: king, don, hello, koi mil gaya, ham app ke hain kon"
+        const gptQuarry = "Act as a Movie recommendation system and suggest some movie for quarry : "+ searchtext.current.value + ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: "+ searchtext.current.value +" king, don, hello, koi mil gaya, ham app ke hain kon. Also add " + searchtext.current.value + "to the list at the first place";
         const chatCompletion = await Openai.chat.completions.create({
             messages: [{ role: 'user', content: gptQuarry }],
             model: 'gpt-3.5-turbo',
@@ -51,6 +51,7 @@ const GptSearch = ()=>{
              onSubmit={(e)=>e.preventDefault()} >
                 <input
                 ref={searchtext}
+                required
                  className="h-11  sm:w-96 w-52 m-2 p-2 sm:text-xl"  type="search" placeholder="What would you like to watch today?"/>
                 <button onClick={handleGptClick} className="bg-green-500 h-11 sm:w-40 sm:text-xl m-2 p-2 font-bold">Search</button>
             </form>

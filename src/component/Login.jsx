@@ -20,9 +20,9 @@ const Login = ()=>{
     
     const email = useRef(null)
     const password = useRef(null)
-    console.log(login)
+    // console.log(login)
     if(login==true) return window.location.href = '/browse'
-    console.log('login from login ',login)
+    // console.log('login from login ',login)
 
     async function handleValidation(){
    
@@ -32,8 +32,8 @@ const Login = ()=>{
 
         // sign up
        
-         console.log(email.current.value)
-         console.log(password.current.value)
+        //  console.log(email.current.value)
+        //  console.log(password.current.value)
         await signInWithEmailAndPassword(auth, email.current.value , password.current.value)
             .then((userCredential) => {
             // Signed in 
