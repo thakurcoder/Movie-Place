@@ -6,6 +6,7 @@ import { DataContext } from "./Context/DataContext";
 import Maincontainer from "./Maincontainer";
 import Secondary from "./SecondaryTab";
 import Gptpage from "./Gptpage";
+import NetworkError from "./NetworkError";
 
 const Browse = ()=>{
 
@@ -22,7 +23,7 @@ const Browse = ()=>{
 
     
 
-    if (!data) return 
+    if (!data) return <NetworkError/>
   
     return(
         <div>

@@ -7,17 +7,18 @@ const VideoBg = (props) => {
     const trailer = async () => {
         const data = await fetch('https://api.themoviedb.org/3/movie/' + props.data.id + '/videos?language=en-US', API_OPTION);
         const json = await data.json();
-        const filterTrailer = json.results.filter((e) => {
+        const filterTrailer  = json.results.filter((e) => {
             return e.type === "Trailer";
         });
-
+        // console.log("filtertrailer ",filterTrailer[0])
         setTrailerVideo(filterTrailer[0]);
     }
 
     useEffect(() => {
         trailer();
-    }, []);
+    }, [props.data.id]);
 
+    // console.log("trailerVideo ",trailerVideo)
     if (!trailerVideo) return null;
 
     return (

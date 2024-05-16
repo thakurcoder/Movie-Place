@@ -58,8 +58,8 @@ const GptSearch = ()=>{
 
             <div className="bg-slate-700 text-white">
                 {gptMovieResult.length>1 &&
-                    gptMovieResult.map((e)=>{
-                       return <div className="flex overflow-x-scroll no-scrollbar">
+                    gptMovieResult.map((e,index)=>{
+                       return <div key={index} className="flex overflow-x-scroll no-scrollbar">
                         { e.map((inner,index)=>{
                             // console.log(index,inner)
                             return <MovieCard key={index} data={inner} />
